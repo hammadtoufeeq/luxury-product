@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Rolex Submariner",
+    "category": "Watches",
+    "price": 12000,
+    "image": "/images/rolex.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Omega Speedmaster",
+    "category": "Watches",
+    "price": 6500,
+    "image": "/images/omega.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Patek Philippe Nautilus",
+    "category": "Watches",
+    "price": 35000,
+    "image": "/images/patek.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Audemars Piguet Royal Oak",
+    "category": "Watches",
+    "price": 28000,
+    "image": "/images/audemars.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Hermès Birkin Bag",
+    "category": "Bags",
+    "price": 18000,
+    "image": "/images/hermes.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Chanel Classic Flap Bag",
+    "category": "Bags",
+    "price": 9500,
+    "image": "/images/chanel.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Louis Vuitton Neverfull",
+    "category": "Bags",
+    "price": 2200,
+    "image": "/images/lv.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Gucci Dionysus Bag",
+    "category": "Bags",
+    "price": 3100,
+    "image": "/images/gucci.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Chanel No. 5 Perfume",
+    "category": "Perfumes",
+    "price": 250,
+    "image": "/images/chanelperfume.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Dior Sauvage",
+    "category": "Perfumes",
+    "price": 180,
+    "image": "/images/DiorSauvage.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Tom Ford Oud Wood",
+    "category": "Perfumes",
+    "price": 320,
+    "image": "/images/tomford.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Creed Aventus",
+    "category": "Perfumes",
+    "price": 435,
+    "image": "/images/creed.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Cartier Diamond Necklace",
+    "category": "Jewelry",
+    "price": 25000,
+    "image": "/images/cartiernecklace.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Tiffany & Co. Diamond Ring",
+    "category": "Jewelry",
+    "price": 15000,
+    "image": "/images/tiffanyring.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Van Cleef & Arpels Bracelet",
+    "category": "Jewelry",
+    "price": 32000,
+    "image": "/images/vancleef.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Bulgari Serpenti Earrings",
+    "category": "Jewelry",
+    "price": 8900,
+    "image": "/images/bulgari.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Ray-Ban Aviators Gold",
+    "category": "Sunglasses",
+    "price": 300,
+    "image": "/images/rayban.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Cartier Panthère Sunglasses",
+    "category": "Sunglasses",
+    "price": 950,
+    "image": "/images/cartiersunglasses.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Gucci Oversized Sunglasses",
+    "category": "Sunglasses",
+    "price": 480,
+    "image": "/images/guccisunglasses.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Versace Medusa Sunglasses",
+    "category": "Sunglasses",
+    "price": 410,
+    "image": "/images/versacesunglasses.jpg"
+  }
+]
