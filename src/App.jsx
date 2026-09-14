@@ -1,15 +1,21 @@
 import products from './data/products.json'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [searchTerm, setsearchTerm] = useState("")
-  const [categoryupdate, setcategoryupdate] = useState("")
+  const [searchTerm, setsearchTerm] = useState(localStorage.getItem("searchTerm") || "")
+  const [categoryupdate, setcategoryupdate] = useState(localStorage.getItem("categoryupdate") || "")
   const [selectedProduct, setselectedProduct] = useState(null)
   const filteredProducts = products.filter(product=>product.name.toLowerCase().includes(searchTerm.toLowerCase())&&(categoryupdate==="" || categoryupdate===product.category))
-
+  useEffect(()=>{
+    localStorage.setItem("searchTerm" , searchTerm)
+  },[searchTerm])
+  useEffect(()=>{
+    localStorage.setItem("categoryupdate" , categoryupdate)
+  },[categoryupdate])
   return (
     <>
+    
       {selectedProduct ? (
         <div className="product-detail">
           <button className="back-btn" onClick={() => setselectedProduct(null)}>Back</button>
