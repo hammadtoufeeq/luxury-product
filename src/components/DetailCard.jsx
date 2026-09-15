@@ -5,4 +5,4 @@ function DetailCard(props){
     </div>
   )
 }
-export default DetailCard;
+export default DetailCard

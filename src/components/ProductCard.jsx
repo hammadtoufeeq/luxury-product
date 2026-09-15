@@ -13,4 +13,4 @@ function ProductCard(props) {
     </div>
   )
 }
-export default ProductCard;
+export default ProductCard
