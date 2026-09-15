@@ -13,6 +13,15 @@ function App() {
   useEffect(()=>{
     localStorage.setItem("categoryupdate" , categoryupdate)
   },[categoryupdate])
+  useEffect(() => {
+    if(selectedProduct){
+    document.title = selectedProduct.name
+    }else{
+      document.title = "Luxury Collection"
+    }
+    
+  }, [selectedProduct])
+  
   return (
     <>
     
