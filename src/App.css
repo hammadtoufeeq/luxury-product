@@ -181,7 +181,13 @@ body {
   letter-spacing: 1px;
 }
 
+.view-btn-link {
+  display: block;
+  width: 100%;
+}
+
 .product-card button.view-btn {
+  width: 100%;
   background: transparent;
   border: 1px solid #d4af37;
   color: #d4af37;
@@ -210,7 +216,7 @@ body {
   padding: 40px 24px 60px;
 }
 
-.product-detail > button.back-btn {
+.product-detail > .back-btn {
   position: absolute;
   top: 40px;
   right: 24px;
@@ -224,21 +230,23 @@ body {
   padding: 8px 16px;
   font-family: inherit;
   transition: background 0.25s ease, color 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.product-detail > button.back-btn:hover {
+.product-detail > .back-btn:hover {
   background: #d4af37;
   color: #0b0b0d;
 }
 
 .product-detail img {
+  display: block;
   width: 100%;
   max-width: 320px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 1px solid #2a2a2e;
-  margin-bottom: 28px;
-  margin-top: 80px;
+  margin: 80px auto 28px;
 }
 
 .product-detail h2 {
@@ -319,33 +327,6 @@ body {
   margin-top: 32px;
 }
 
-@media (max-width: 600px) {
-  .hero-title {
-    font-size: 2.1rem;
-    letter-spacing: 3px;
-  }
-
-  .hero {
-    height: 50vh;
-    min-height: 300px;
-  }
-
-  .search-box,
-  .category-filter {
-    min-width: 160px;
-    flex: 1;
-  }
-
-  .product-detail > button.back-btn {
-    position: static;
-    display: inline-block;
-    margin-bottom: 24px;
-  }
-
-  .product-detail img {
-    margin-top: 0;
-  }
-}
 /* FOOTER */
 
 .app-footer {
@@ -376,6 +357,7 @@ body {
   color: #6b6b70;
   margin-top: 16px;
 }
+
 /* NAVBAR */
 
 .navbar {
@@ -433,6 +415,36 @@ body {
 
 .navbar-links span:hover::after {
   width: 100%;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2.1rem;
+    letter-spacing: 3px;
+  }
+
+  .hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .search-box,
+  .category-filter {
+    min-width: 160px;
+    flex: 1;
+  }
+
+  .product-detail > .back-btn {
+    position: static;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+
+  .product-detail img {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 700px) {
