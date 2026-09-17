@@ -5,16 +5,16 @@ import InquiryForm from './InquiryForm'
 
 function RolexPage() {
     const { id } = useParams()
-    const rolex = products.find(product => product.id === Number(id))
+    const searchedproduct = products.find(product => product.id === Number(id))
 
     return (
         <DetailCard>
             <Link to="/" className="back-btn">Back</Link>
-            <img src={rolex.image} alt={rolex.name} />
-            <h2>{rolex.name}</h2>
-            <p>Category: {rolex.category}</p>
-            <p>Price: ${rolex.price.toLocaleString()}</p>
-            <InquiryForm productName={rolex.name} />
+            <img src={searchedproduct.image} alt={searchedproduct.name} />
+            <h2>{searchedproduct.name}</h2>
+            <p>Category: {searchedproduct.category}</p>
+            <p>Price: ${searchedproduct.price.toLocaleString()}</p>
+            <InquiryForm productName={searchedproduct.name} />
         </DetailCard>
     )
 }
