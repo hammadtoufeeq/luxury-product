@@ -4,21 +4,27 @@ import CategoryFilter from './CategoryFilter'
 import products from '../data/products.json'
 import ProductCard from './ProductCard'
 import Footer from './Footer'
-import { useState, useRef } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
+import { useState, useRef, useMemo , useCallback } from 'react'
 function HomePage() {
   const gridRef = useRef(null)
-  const [searchTerm, setsearchTerm] = useState("")
+  const [searchTerm, setsearchTerm] = useLocalStorage("searchTerm", "")
   const [categoryupdate, setcategoryupdate] = useState("")
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (categoryupdate === "" || categoryupdate === product.category)
-  )
+
+  const filteredProducts = useMemo(() =>
+    products.filter(product =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (categoryupdate === "" || categoryupdate === product.category)
+    ), [searchTerm, categoryupdate])
+  const handleCategoryClick = useCallback((cat) => {
+    setcategoryupdate(cat)
+    gridRef.current.scrollIntoView({ behavior: "smooth" })
+  }, [])
+
+
   return (
     <>
-      <Navbar onCategoryClick={(cat) => {
-        setcategoryupdate(cat)
-        gridRef.current.scrollIntoView({ behavior: "smooth" })
-      }} />
+      <Navbar onCategoryClick={handleCategoryClick} />
       <div className="hero">
         <img src="/images/hero4.jpg" alt="Luxury Collection" className="hero-image" />
         <div className="hero-overlay">
@@ -41,7 +47,7 @@ function HomePage() {
           />
         ))}
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }

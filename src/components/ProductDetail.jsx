@@ -2,10 +2,15 @@ import { Link, useParams , Outlet } from 'react-router-dom'
 import products from '../data/products.json'
 import DetailCard from './DetailCard'
 import InquiryForm from './InquiryForm'
-
+import { useEffect } from 'react'
 function ProductDetail() {
     const { id } = useParams()
     const searchedproduct = products.find(product => product.id === Number(id))
+    useEffect(() => {
+      document.title = searchedproduct.name
+    
+    }, [searchedproduct])
+    
 
     return (
         <DetailCard>
