@@ -1,9 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams , Outlet } from 'react-router-dom'
 import products from '../data/products.json'
 import DetailCard from './DetailCard'
 import InquiryForm from './InquiryForm'
 
-function RolexPage() {
+function ProductDetail() {
     const { id } = useParams()
     const searchedproduct = products.find(product => product.id === Number(id))
 
@@ -15,7 +15,9 @@ function RolexPage() {
             <p>Category: {searchedproduct.category}</p>
             <p>Price: ${searchedproduct.price.toLocaleString()}</p>
             <InquiryForm productName={searchedproduct.name} />
+            <Link to='reviews' className="reviews-link">Reviews</Link>
+            <Outlet/>
         </DetailCard>
     )
 }
-export default RolexPage
+export default ProductDetail
