@@ -20,6 +20,7 @@ function HomePage() {
     setcategoryupdate(cat)
     gridRef.current.scrollIntoView({ behavior: "smooth" })
   }, [])
+     document.title = "Luxury Product"
 
 
   return (
