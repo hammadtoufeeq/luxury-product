@@ -43,7 +43,7 @@ return (
                     onChange={(e) => setpassword(e.target.value)}
                     required
                 />
-                <button type="submit">Login</button>
+                <button type="submit">Sign up</button>
                 <Link to="/login" className="auth-link">Already have an account? Login</Link>
             </form>
         </div>
