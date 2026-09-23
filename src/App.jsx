@@ -5,6 +5,7 @@ import HomePage from './components/Home'
 import Review from './components/Review'
 import Login from './components/Login'
 import ProtectedRoute from './components/ProtectedRoute'
+import Signup from './components/Signup'
 function App() {
   return (
     <Routes>
@@ -16,6 +17,7 @@ function App() {
       <Route path='reviews' element={<Review/>}/>
       </Route>
       <Route path='/login' element={<Login/>}/>
+      <Route path='/signup' element={<Signup />} />
 
     </Routes>
   )

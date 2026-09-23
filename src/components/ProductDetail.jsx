@@ -1,16 +1,20 @@
 import { Link, useParams , Outlet } from 'react-router-dom'
-import products from '../data/products.json'
+import axios from 'axios'
 import DetailCard from './DetailCard'
 import InquiryForm from './InquiryForm'
-import { useEffect } from 'react'
+import { useEffect , useState } from 'react'
 function ProductDetail() {
     const { id } = useParams()
-    const searchedproduct = products.find(product => product.id === Number(id))
+    const [searchedproduct, setsearchedproduct] = useState(null)
     useEffect(() => {
-      document.title = searchedproduct.name
+      axios.get(`http://localhost:3002/products/${id}`).then(response => {
+        setsearchedproduct(response.data)
+      })
     
-    }, [searchedproduct])
-    
+    }, [id])
+    if(!searchedproduct){
+        return <p>Loading...</p>
+    }
 
     return (
         <DetailCard>

@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import axios from 'axios'
 function InquiryForm(props) {
   const [name, setname] = useState("")
   const [email, setemail] = useState("")
   const [submitted, setsubmitted] = useState(false)
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    console.log("Inquiry:", { product: props.productName, name, email })
+    await axios.post('http://localhost:3002/inquiries', { name, email, productName: props.productName })
     setsubmitted(true)
   }
 

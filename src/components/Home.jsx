@@ -1,21 +1,33 @@
 import Navbar from './Navbar'
 import SearchBox from './SearchBox'
 import CategoryFilter from './CategoryFilter'
-import products from '../data/products.json'
 import ProductCard from './ProductCard'
 import Footer from './Footer'
 import useLocalStorage from '../hooks/useLocalStorage'
-import { useState, useRef, useMemo , useCallback } from 'react'
+import axios from 'axios'
+import { useState, useRef, useMemo , useCallback , useEffect} from 'react'
 function HomePage() {
   const gridRef = useRef(null)
   const [searchTerm, setsearchTerm] = useLocalStorage("searchTerm", "")
   const [categoryupdate, setcategoryupdate] = useState("")
+  const [products,setProducts] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3002/products')
+      .then(response => {
+        setProducts(response.data)
+        console.log(response)
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error)
+      })
+  }, [])
 
   const filteredProducts = useMemo(() =>
     products.filter(product =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (categoryupdate === "" || categoryupdate === product.category)
-    ), [searchTerm, categoryupdate])
+    ), [products,searchTerm, categoryupdate])
   const handleCategoryClick = useCallback((cat) => {
     setcategoryupdate(cat)
     gridRef.current.scrollIntoView({ behavior: "smooth" })
@@ -39,8 +51,8 @@ function HomePage() {
       <div className="product-grid" ref={gridRef}>
         {filteredProducts.map(product => (
           <ProductCard
-            id={product.id}
-            key={product.id}
+            id={product._id}
+            key={product._id}
             image={product.image}
             name={product.name}
             category={product.category}
