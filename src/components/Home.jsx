@@ -4,7 +4,7 @@ import CategoryFilter from './CategoryFilter'
 import ProductCard from './ProductCard'
 import Footer from './Footer'
 import useLocalStorage from '../hooks/useLocalStorage'
-import axios from 'axios'
+import api from '../api/axios.js'
 import { useState, useRef, useMemo , useCallback , useEffect} from 'react'
 function HomePage() {
   const gridRef = useRef(null)
@@ -13,7 +13,7 @@ function HomePage() {
   const [products,setProducts] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3002/products')
+    api.get('/products')
       .then(response => {
         setProducts(response.data)
         console.log(response)

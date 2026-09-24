@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import { useNavigate, Link , useLocation } from "react-router-dom";
+import api from "../api/axios.js";
 
 
 function Login() {
@@ -9,13 +9,14 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const redirectMessage = location.state?.message;
     async function handleLogin(e) {
     e.preventDefault()
     try {
-         await axios.post(
-            'http://localhost:3002/users/login',
-            { email, password },
-            { withCredentials: true }
+         await api.post(
+            '/users/login',
+            { email, password }
         )
     } catch (err) {
         alert(err.response?.data?.message || 'Login failed');
@@ -31,6 +32,7 @@ return (
         <div className="product-detail">
             <Link to="/" className="back-btn">Back to Home</Link>
             <h2>Login</h2>
+            {redirectMessage && <p className="auth-message">{redirectMessage}</p>}
             <form onSubmit={handleLogin}>
                 <input
                     type="email"

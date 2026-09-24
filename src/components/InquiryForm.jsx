@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import api from '../api/axios.js'
 function InquiryForm(props) {
   const [name, setname] = useState("")
   const [email, setemail] = useState("")
@@ -7,7 +7,7 @@ function InquiryForm(props) {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    await axios.post('http://localhost:3002/inquiries', { name, email, productName: props.productName })
+    await api.post('/inquiries', { name, email, productName: props.productName })
     setsubmitted(true)
   }
 
