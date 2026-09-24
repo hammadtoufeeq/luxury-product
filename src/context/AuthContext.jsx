@@ -4,9 +4,11 @@ export const AuthContext = createContext()
 
 export function AuthProvider(props){
     const [isLoggedIn, setIsLoggedIn] = useState(null)
-    
+    const [user, setuser] = useState(null)
     useEffect(() => {
-      api.get('/users/me').then(()=>setIsLoggedIn(true)).catch(()=>setIsLoggedIn(false))
+      api.get('/users/me').then((response)=>{
+        setuser(response.data.user)
+        setIsLoggedIn(true)}).catch(()=>setIsLoggedIn(false))
     }, [])
     async function logout() {
     try{
@@ -15,11 +17,12 @@ export function AuthProvider(props){
         return console.error('Logout failed:', err);
     }
     alert('You have been logged out.');
+    setuser(null)
     setIsLoggedIn(false);
 }
     
     return(
-        <AuthContext.Provider value={{isLoggedIn ,setIsLoggedIn , logout}}>
+        <AuthContext.Provider value={{isLoggedIn ,setIsLoggedIn , logout , user , setuser}}>
             {props.children}
         </AuthContext.Provider>
     )

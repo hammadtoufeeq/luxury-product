@@ -14,6 +14,7 @@ api.interceptors.response.use(
 
     if (status !== 401) return Promise.reject(error)
     if (failedRequest.url === '/users/refresh') return Promise.reject(error)
+    if(failedRequest.url=== '/users/login') return Promise.reject(error)
     if (failedRequest._retry) return Promise.reject(error)
 
     failedRequest._retry = true

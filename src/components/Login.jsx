@@ -5,7 +5,7 @@ import api from "../api/axios.js";
 
 
 function Login() {
-    const { setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn , setuser } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -13,8 +13,9 @@ function Login() {
     const redirectMessage = location.state?.message;
     async function handleLogin(e) {
     e.preventDefault()
+    let response
     try {
-         await api.post(
+         response = await api.post(
             '/users/login',
             { email, password }
         )
@@ -25,6 +26,7 @@ function Login() {
         return
     }
     setIsLoggedIn(true)
+    setuser(response.data.user)
     navigate('/')
 }
 return (
