@@ -454,14 +454,33 @@ body {
 @media (max-width: 700px) {
   .navbar {
     flex-direction: column;
-    gap: 16px;
-    padding: 18px 20px;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 16px;
   }
 
   .navbar-links {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 12px 18px;
+    width: 100%;
+  }
+
+  .navbar-links span,
+  .navbar-links a {
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar-links {
+    gap: 10px 14px;
+  }
+
+  .navbar-links span,
+  .navbar-links a {
+    font-size: 0.62rem;
   }
 }
 .reviews-section {
@@ -632,4 +651,115 @@ body {
 
 .page-status-error {
   color: #c0504d;
+}
+
+/* ===== ADDITIONAL MOBILE RESPONSIVE RULES ===== */
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 0 16px 60px;
+  }
+
+  .product-detail {
+    padding: 32px 16px 48px;
+  }
+
+  .product-detail img {
+    max-width: 260px;
+    margin: 64px auto 22px;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+  }
+
+  .admin-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-brand {
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+  }
+
+  .controls {
+    margin: 32px 0 32px;
+    gap: 12px;
+  }
+
+  .search-box,
+  .category-filter {
+    min-width: 0;
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1rem;
+  }
+
+  .product-detail h2 {
+    font-size: 1.35rem;
+  }
+
+  .product-detail form {
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .loading,
+  .page-status {
+    min-height: 40vh;
+    padding: 24px 16px;
+  }
+
+  .spinner {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-title::after {
+    width: 70px;
+    margin-top: 16px;
+  }
+
+  .hero {
+    height: 42vh;
+    min-height: 240px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-detail img {
+    max-width: 220px;
+  }
+
+  .app-footer h3 {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
 }
