@@ -1,5 +1,6 @@
 import { useState , createContext, useEffect } from "react";
 import api from '../api/axios.js'
+import toast from "react-hot-toast";
 export const AuthContext = createContext()
 
 export function AuthProvider(props){
@@ -16,7 +17,7 @@ export function AuthProvider(props){
     }catch(err){
         return console.error('Logout failed:', err);
     }
-    alert('You have been logged out.');
+    toast.success('You have been logged out.');
     setuser(null)
     setIsLoggedIn(false);
 }

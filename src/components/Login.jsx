@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link , useLocation } from "react-router-dom";
 import api from "../api/axios.js";
-
+import toast from "react-hot-toast";
 
 function Login() {
     const { setIsLoggedIn , setuser } = useContext(AuthContext);
@@ -20,11 +20,12 @@ function Login() {
             { email, password }
         )
     } catch (err) {
-        alert(err.response?.data?.message || 'Login failed');
+        toast.error(err.response?.data?.message || 'Login failed');
         setPassword('')
         console.error('Login failed:', err.response?.data || err.message)
         return
     }
+    toast.success('Login successfull')
     setIsLoggedIn(true)
     setuser(response.data.user)
     navigate('/')

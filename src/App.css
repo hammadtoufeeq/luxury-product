@@ -763,3 +763,24 @@ body {
     letter-spacing: 2px;
   }
 }
+.app-toast {
+  background: #1a1814 !important;
+  color: #eae6df !important;
+  border: 1px solid #38352c;
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 14px 18px;
+}
+
+.app-toast-success {
+  border: 1px solid #d4af37;
+}
+
+.app-toast-success div[role="status"] {
+  color: #d4af37;
+}
+
+.app-toast-error {
+  border: 1px solid #c0504d;
+}

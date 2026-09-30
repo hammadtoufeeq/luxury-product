@@ -5,7 +5,7 @@ import InquiryForm from './InquiryForm'
 import { useState,  useContext } from 'react'
 import { AuthContext } from '../context/AuthContext.jsx'
 import { useQuery , useMutation , useQueryClient } from '@tanstack/react-query'
-
+import toast from 'react-hot-toast'
 function ProductDetail() {
     const queryClient = useQueryClient()
     const { id } = useParams()
@@ -29,10 +29,11 @@ function ProductDetail() {
         },
         onSuccess : function(){
             queryClient.invalidateQueries({queryKey:['products']})
+            toast.success("Product deleted successfully")
             navigate('/')
         },
         onError: function(err){
-            alert(err.response?.data?.message || 'Delete failed')
+            toast.error(err.response?.data?.message || 'Delete failed')
         }
     })
     function handleDelete(){
@@ -55,10 +56,11 @@ function ProductDetail() {
         },
         onSuccess : function(data){
             queryClient.setQueryData(['product' , id] , data)
+            toast.success('Product saved successfully')
             setEditing(false)
         },
         onError:function(err){
-            alert(err.response?.data?.message || "Update failed")
+            toast.error(err.response?.data?.message || "Update failed")
         }
     })
     async function handleSave(e) {
