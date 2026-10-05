@@ -50,37 +50,29 @@ function ProductDetail() {
         setEditing(true)
     }
     const saveMutation = useMutation({
-    mutationFn: async function (form) {
-        const response = await api.put(`/products/${id}`, { ...form, price: Number(form.price) })
-        return response.data
-    },
-    onMutate: async function (form) {
-        await queryClient.cancelQueries({ queryKey: ['product', id] })
-
-        const previousProduct = queryClient.getQueryData(['product', id])
-
-        queryClient.setQueryData(['product', id], {
-            ...previousProduct,
-            ...form,
-            price: Number(form.price)
-        })
-
-        setEditing(false)
-
-        return { previousProduct }
-    },
-    onSuccess: function (data) {
-        queryClient.setQueryData(['product', id], data)
-        toast.success('Product saved successfully')
-    },
-    onError: function (err, form, context) {
-        queryClient.setQueryData(['product', id], context.previousProduct)
-        toast.error(err.response?.data?.message || "Update failed")
-    },
-    onSettled: function () {
-        queryClient.invalidateQueries({ queryKey: ['product', id] })
-    }
-})
+        mutationFn:async function(form){
+            const response = await api.put(`/products/${id}`, {...form,price: Number(form.price)})
+            return response.data
+        },
+        onMutate: async function(form){
+            await queryClient.cancelQueries({queryKey:['product',id]})
+            const previousProduct = queryClient.getQueryData(['product',id])
+            queryClient.setQueryData(['product',id],{...previousProduct,...form,price:Number(form.price)})
+            setEditing(false)
+            return {previousProduct}
+        },
+        onError: function(err,form,context){
+            queryClient.setQueryData(['product',id],context.previousProduct)
+            toast.error(err.response?.data?.message || 'Update failed')
+        },
+          onSuccess: function(data){
+            queryClient.setQueryData(['product',id],data)
+            toast.success('Product updated successfully')
+        },
+        onSettled: function(){
+            queryClient.invalidateQueries({queryKey:['product',id]})
+        }
+    })
     async function handleSave(e) {
         e.preventDefault()
         saveMutation.mutate(form)
