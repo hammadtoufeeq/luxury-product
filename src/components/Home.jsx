@@ -5,8 +5,9 @@ import ProductCard from './ProductCard'
 import Footer from './Footer'
 import useLocalStorage from '../hooks/useLocalStorage'
 import api from '../api/axios.js'
-import { useState, useRef, useMemo, useCallback } from 'react'
+import { useState, useRef, useMemo, useCallback ,useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
+
 function HomePage() {
   const gridRef = useRef(null)
   const [searchTerm, setsearchTerm] = useLocalStorage("searchTerm", "")
@@ -20,7 +21,7 @@ function HomePage() {
       return response.data
     }
   })
-  const products = data || []
+  const products = useMemo(() => data || [], [data])
 
   const filteredProducts = useMemo(() =>
     products.filter(product =>
@@ -31,7 +32,8 @@ function HomePage() {
     setcategoryupdate(cat)
     gridRef.current.scrollIntoView({ behavior: "smooth" })
   }, [])
-  document.title = "Luxury Product"
+  useEffect(() => {
+  document.title = "Luxury Product"}, [])
 
 
   return (

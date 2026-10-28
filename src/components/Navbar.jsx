@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
 import { useContext  } from "react"
+import {memo} from 'react'
 function Navbar(props) {
   const {isLoggedIn , logout} = useContext(AuthContext)
   return (
@@ -21,4 +22,4 @@ function Navbar(props) {
   )
 
 }
-export default Navbar
+export default memo(Navbar)

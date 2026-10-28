@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import {memo} from 'react'
 function ProductCard(props) {
   return (
     <div className="product-card">
@@ -16,4 +17,4 @@ function ProductCard(props) {
     </div>
   )
 }
-export default ProductCard
+export default memo(ProductCard)

@@ -1,7 +1,8 @@
-import { useState , createContext, useEffect } from "react";
+import { useState , createContext, useEffect ,useMemo } from "react";
 import api from '../api/axios.js'
 import toast from "react-hot-toast";
 export const AuthContext = createContext()
+import { useCallback } from "react";
 
 export function AuthProvider(props){
     const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -11,7 +12,7 @@ export function AuthProvider(props){
         setuser(response.data.user)
         setIsLoggedIn(true)}).catch(()=>setIsLoggedIn(false))
     }, [])
-    async function logout() {
+    const logout=useCallback(() => async () => {
     try{
         await api.post('/users/logout', {});
     }catch(err){
@@ -20,10 +21,11 @@ export function AuthProvider(props){
     toast.success('You have been logged out.');
     setuser(null)
     setIsLoggedIn(false);
-}
+},[])
+const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn, logout, user, setuser }), [isLoggedIn, user]);
     
     return(
-        <AuthContext.Provider value={{isLoggedIn ,setIsLoggedIn , logout , user , setuser}}>
+        <AuthContext.Provider value={value}>
             {props.children}
         </AuthContext.Provider>
     )
