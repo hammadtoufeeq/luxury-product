@@ -14,9 +14,11 @@ function Navbar(props) {
         <span onClick={() => { props.onCategoryClick("Perfumes") }}>Perfumes</span>
         <span onClick={() => { props.onCategoryClick("Jewelry") }}>Jewelry</span>
         <span onClick={() => { props.onCategoryClick("Sunglasses") }}>Sunglasses</span>
-        {isLoggedIn ? (
-          <button onClick={logout}>Logout</button>
-        ):(<Link to = "/login">Login</Link>)}
+        {isLoggedIn === null ? null : isLoggedIn ? (
+  <button onClick={logout}>Logout</button>
+) : (
+  <Link to="/login">Login</Link>
+)}
       </div>
     </nav>
   )

@@ -12,7 +12,7 @@ export function AuthProvider(props){
         setuser(response.data.user)
         setIsLoggedIn(true)}).catch(()=>setIsLoggedIn(false))
     }, [])
-    const logout=useCallback(() => async () => {
+    const logout=useCallback(async () => {
     try{
         await api.post('/users/logout', {});
     }catch(err){

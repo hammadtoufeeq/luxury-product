@@ -388,7 +388,8 @@ body {
 }
 
 .navbar-links span,
-.navbar-links a {
+.navbar-links a,
+.navbar-links button {
   font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -398,6 +399,12 @@ body {
   padding-bottom: 4px;
   transition: color 0.3s ease;
   text-decoration: none;
+}
+
+.navbar-links button {
+  background: none;
+  border: none;
+  font-family: inherit;
 }
 
 
@@ -413,7 +420,8 @@ body {
 }
 
 .navbar-links span:hover,
-.navbar-links a:hover {
+.navbar-links a:hover,
+.navbar-links button:hover {
   color: #d4af37;
 }
 
@@ -467,7 +475,8 @@ body {
   }
 
   .navbar-links span,
-  .navbar-links a {
+  .navbar-links a,
+  .navbar-links button {
     font-size: 0.68rem;
     letter-spacing: 1px;
   }
@@ -479,7 +488,8 @@ body {
   }
 
   .navbar-links span,
-  .navbar-links a {
+  .navbar-links a,
+  .navbar-links button {
     font-size: 0.62rem;
   }
 }
